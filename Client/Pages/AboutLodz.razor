@@ -1,0 +1,128 @@
+@page "/aboutlodz"
+
+<h3>Something about Lodz</h3>
+
+<div>
+    <h4>1. Największy Mural w Polsce!</h4>
+    <img src="csm_csm_Mural_z_Wiedzminem__5__4160a3864b_6b7f09377f.jpg" style="width: 500px; height: auto;">
+    <p>Łódź słynnie z murali. To tutaj znajduje się największy w kraju mural i jeden z największych na świecie.
+        Powstał na trzech ścianach wieżowców przy ul. Piotrkowskiej 182. Mural pokrył trzy ściany na łódzkim
+        Manhattanie, to 24 piętra, ponad 70 metrów wysokości! Poświęcony jest Wiedźminowi, bo również twórca
+        tej postaci -Andrzej Sapkowski – urodził się w Łodzi i tu stworzył swoją słynną książkę.</p>
+    
+    
+    
+    <h4>2. Sztuka uliczna - nie tylko murale</h4>
+    <img src="csm__MG_2761_copy_1688a35513.jpg" style="width: 500px; height: auto;">
+    <p>Oprócz dużej ilości wspaniałych murali, w Łodzi znajdują się 2 artystyczne podwórka, czyli „Pasaż Róży”
+        (ul. Piotrkowska 3) i „Narodziny Dnia”(ul. Więckowskiego 4). Autorką projektu „Pasaż Róży” jest
+        artystka Joanna Rajkowska. Realizacja projektu była bardzo pracochłonna, polegała na wyklejeniu
+        kawałkami pociętych na małe części luster ścian kamienicy. Odbijająca światło mozaika ożywia otoczenie,
+        a fragmenty luster dają z pozoru obrazy niedopasowane do siebie i zniekształcone. Do przeniesienia
+        dzieł na elewacje kamienicy przy ul. Więckowskiego 4 wykorzystano nowatorską technikę, której nie
+        można spotkać nigdzie indziej na świecie. Malowidła znalazły się na 260 supernowoczesnych płytach
+        gresowych wykonanych na specjalne zamówienie przez Ceramikę Tubądzin (woj. łódzkie). Największa z nich
+        mierzy 2 metry, a najmniejsza 25 centymetrów. Instalacja zajmuje w sumie 350 m kw. powierzchni.</p>
+    
+    
+    <h4>3. Najstarsze polskie palmy</h4>
+    <img src="csm_palmiarnia-lodz-palmy-w-lodzi-ciekawostka-ciekawostki_436304ac31.jpg" style="width: 500px; height: auto;">
+    <p>Od Muzeum Kinematografii przeniesiemy się trochę dalej do Palmiarni Ogrodu Botanicznego. Powstanie
+        obiektu było nieco przypadkowe. Pierwsze okazy roślin egzotycznych pochodziły z ogrodów zimowych
+        łódzkich fabrykantów, którzy z różnych względów nie mogli się już nimi zajmować i postanowili
+        składować je w jednym miejscu - budynku w pierwszym łódzkim parku miejskim. Po II wojnie światowej
+        łodzianie zyskali możliwość odwiedzin Palmiarni i stał się jedną z największy atrakcji Łodzi. To są
+        najstarsze palmy w Polsce, liczące 150 lat.</p>
+    
+    
+    <h4>4. Najnowocześniejsze ZOO w Europie</h4>
+    <img src="csm_lodz-najnowoczesniejsze-zoo-w-polsce-orientarium-ciekawostka-ciekawostki-lodzi_c31d984273 (1).jpg" style="width: 500px; height: auto;">
+    <p>Na terenie ZOO powstało Orientarium – ogromny pawilon hodowlano – wystawienniczy, w którym zamieszkała
+        fauna z południowo - wschodniej Azji, między innymi słonie indyjskie, orangutany sumatrzańskie i
+        niedźwiedzie malajskie. To najnowocześniejsze ZOO w Europie.</p>
+    
+    
+    <h4>5. Największy w Polsce cmentarz żydowski</h4>
+    <img src="csm_lodz-najstarszy-cmentarz-zydowski-w-polsce-ciekawostki-ciekawostka-lodzi_3da7c369c6.jpg" style="width: 500px; height: auto;">
+    <p>Największa w Polsce pod względem powierzchni nekropola żydowska (42 ha, ponad 230 tys. pochowanych, w tym
+        ok. 45 tys. stanowią mogiły zmarłych i zamordowanych w okresie funkcjonowania łódzkiego getta). W
+        momencie założenia był największym cmentarzem żydowskim w Europie, obecnie największym jest cmentarz
+        berliński. Mieści się tu także monumentalne mauzoleum poświęcone pamięci małżeństwa Izraela i Leonii
+        Poznańskich.</p>
+    
+</div>
+
+<body>
+<h3>Interesting fact, click on it</h3>
+
+<footer>
+    <button onclick="showMuralInfo()">FACT</button>
+</footer>
+<div style="margin: 50px"></div>
+
+<script>
+    function showMuralInfo() {
+        alert("Największy mural w Polsce znajduje się w Łodzi! Jest to mural Wiedźmin na ul. Piotrkowskiej 182. Ma 24 piętra i ponad 70 metrów wysokości. Autor postaci Wiedźmina, Andrzej Sapkowski, urodził się w Łodzi.");
+    }
+</script>
+</body>
+
+
+
+<p role="status">Ocena: @currentMark</p>
+
+@if (currentMark >= 1 && currentMark <= 5)
+{
+    <p> Ocena @GetMarkDescription(currentMark).</p>
+}
+
+<button class="btn btn-primary" @onclick="IncrementMark" disabled="@IsMarkMax">Increase</button>
+<button class="btn btn-primary" @onclick="DecrementMark" disabled="@IsMarkMin">Decrease</button>
+
+@code {
+    private int currentMark = 0;
+    private bool IsMarkMax => currentMark >= 5;
+    private bool IsMarkMin => currentMark <= 1;
+
+    private string GetMarkDescription(int mark)
+    {
+        switch (mark)
+        {
+            case 1:
+                return "bardzo słaba";
+            case 2:
+                return "słaba";
+            case 3:
+                return "średnia";
+            case 4:
+                return "dobra";
+            case 5:
+                return "bardzo dobra";
+            default:
+                return "-//-";
+        }
+    }
+    
+    private void IncrementMark()
+    {
+        if (currentMark < 5)
+        {
+            currentMark++;
+        }
+    }
+
+    private void DecrementMark()
+    {
+        if (currentMark > 1)
+        {
+            currentMark--;
+        }
+    }
+}
+
+<footer>
+    <Komponent Color="gray"/>
+</footer>
+
+
+
