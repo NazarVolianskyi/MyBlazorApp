@@ -1,15 +1,16 @@
-﻿@inherits LayoutComponentBase
+﻿
+@inherits LayoutComponentBase
 <PageTitle>Blazor</PageTitle>
 <div class="page">
-    <div class="sidebar">
+    <div class="sidebar" style="background-color: #2c3e50;">
         <NavMenu />
     </div>
     <main>
-        <div class="top-row px-4" style="color: black; background-color: cornflowerblue;">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+        <div class="top-row px-4" style="color: white; background-color: #34495e;">
+            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank" style="color: #ecf0f1;">About</a>
         </div>
 
-        <article class="content px-4">
+        <article class="content px-4" style="color: #2c3e50;">
             @Body
         </article>
     </main>

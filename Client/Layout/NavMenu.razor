@@ -1,36 +1,52 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿<div class="top-row ps-3 navbar navbar-dark" style="background-color: #34495e;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">Main</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+        <a class="navbar-brand" href="" style="color: #ecf0f1;">Main</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu" style="border-color: #ecf0f1;">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
 </div>
 
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu" style="background-color: #2c3e50;">
     <nav class="flex-column">
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+            <NavLink class="nav-link custom-nav-link" href="" Match="NavLinkMatch.All">
                 <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
+            <NavLink class="nav-link custom-nav-link" href="counter">
                 <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
+            <NavLink class="nav-link custom-nav-link" href="weather">
                 <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Weather
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="aboutlodz">
+            <NavLink class="nav-link custom-nav-link" href="aboutlodz">
                 <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> About Lodz
             </NavLink>
         </div>
     </nav>
 </div>
+
+<style>
+    .custom-nav-link {
+        color: #ecf0f1;
+        border: 2px solid #ecf0f1;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 5px 0;
+        text-align: center;
+    }
+
+    .custom-nav-link:hover {
+        background-color: #34495e;
+        color: #ecf0f1;
+    }
+</style>
 
 @code {
     private bool collapseNavMenu = true;
